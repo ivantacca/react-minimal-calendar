@@ -1,6 +1,6 @@
-# react-minimal-calendar
+# react-minimal-calendar 🗓
 
-> A minimal, good-looking and modern calendar for react 🗓✨
+> A minimal, good-looking and modern calendar for react
 
 ## Install
 
