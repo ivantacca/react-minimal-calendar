@@ -1,8 +1,6 @@
 # react-minimal-calendar
 
-> A minimal, good-looking and modern calendar for react
-
-[![NPM](https://img.shields.io/npm/v/react-minimal-calendar.svg)](https://www.npmjs.com/package/react-minimal-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+> A minimal, good-looking and modern calendar for react 🗓✨
 
 ## Install
 
