@@ -35,7 +35,7 @@ function App() {
         }} // optional (boolean or callback)
         daySize={40} // optional (int, def. 40)
         fontSize={16} // optional (int, def. 14)
-        fontFamily={'Gotham'}
+        fontFamily={'Gotham'} // optional
       />
       
     </div>
