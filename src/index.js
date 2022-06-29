@@ -10,42 +10,56 @@ import {
     Label,
     FixedWrapper
 } from './styled'
-import { loader, resolveHeader, resolveMonthName } from './utils'
+import { loader, resolveHeader, resolveMonthName, reduceMonthIndex, reduceYear, validateProps } from './utils'
 
 
 export default class Calendar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            month: this.props.month.month,
-            year: this.props.month.year,
-            selected: this.props.multiselect ? [this.props.value] : this.props.value
-        };
+        this.state = validateProps(this.props);
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.month.year !== this.props.month.year){
+            this.setState({
+                year: this.props.month.year
+            })
+        }
+
+        if(prevProps.month.month !== this.props.month.month){
+            this.setState({
+                month: reduceMonthIndex(this.props.month.month),
+                year: reduceYear(this.props.month.year, this.props.month.month)
+            })
+        }
     }
 
     select = async (day) => {
-        if(this.props.multiselect){
-            let newSelected = []
-            if(this.state.selected.includes(day)){
-                newSelected = await this.state.selected.filter(selection => selection !== day)
-                this.setState({ selected:  newSelected});
+        if(typeof(this.props.onChange) === 'function'){
+            if(this.props.multiselect){
+                let newSelected = []
+                if(this.state.selected.includes(day)){
+                    newSelected = await this.state.selected.filter(selection => selection !== day)
+                    this.setState({ selected:  newSelected});
+                }
+                else {
+                    newSelected = [...this.state.selected, day]
+                    this.setState({ selected:  newSelected});
+                }
+                this.props.onChange(newSelected);
+
             }
             else {
-                newSelected = [...this.state.selected, day]
-                this.setState({ selected:  newSelected});
+                if (this.state.selected == day) {
+                    this.setState({ selected: null });
+                    this.props.onChange(null);
+                } else {
+                    this.setState({ selected: day });
+                    this.props.onChange(day);
+                }
             }
-            this.props.onChange(newSelected);
+        }
 
-        }
-        else {
-            if (this.state.selected == day) {
-                this.setState({ selected: null });
-                this.props.onChange(null);
-            } else {
-                this.setState({ selected: day });
-                this.props.onChange(day);
-            }
-        }
     };
 
     handleIndicatorClick = callback => {
@@ -56,8 +70,8 @@ export default class Calendar extends React.Component {
     render() {
         const CalendarRender = (
             <CalendarContainer fontFamily={this.props.fontFamily} palette={this.props.palette || {}}>
-                {this.props.indicator ? <MonthSelectorButton onClick={() => this.handleIndicatorClick(this.props.indicator)}>
-                    <Label>{resolveMonthName(this.props.month.month)}</Label>
+                {this.props.indicator ? <MonthSelectorButton onClick={() => this.handleIndicatorClick(this.props.onIndicatorClick)}>
+                    <Label>{resolveMonthName(this.state.month)}{this.props.indicator === 'show-year' ? ' ' + this.state.year : null}</Label>
                 </MonthSelectorButton> : null}
                 <InnerCalendar
                     closedDays={this.props.closedDays || []}

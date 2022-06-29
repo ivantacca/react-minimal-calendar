@@ -1,11 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+  margin:0;
+  padding:0;
+}
 .App {
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  
 }
+
+.App > button {
+  flex: 0 0 45px;
+  background-color: rgba(0, 0, 139,0.03);
+  color: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 45px;
+  border: 0;
+  border-radius: 100%;
+  margin: 50px;
+  transition-duration: .3s;
+}
+.App > button:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
 
 .App-logo {
   height: 40vmin;

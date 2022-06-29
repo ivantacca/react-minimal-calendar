@@ -17,30 +17,60 @@ function App() {
   
   return (
     <div className="App">
-    
       <Calendar 
-        month={{ year: 2022, month }} // mandatory
-        value={date} // mandatory
-        onChange={setDate}  // mandatory
-        closedDays={['2022-06-15']} // optional
-        closedPastDays={false} // optional boolean or 'include-today'
-        indicator={()=>alert('react-minimal-calendar is 🔥')} // optional (boolean or callback)
-        multiselect={false} // optional (boolean ...)
-        header={true} // optional bool or Array(7)
-        layout="fixed" // optional (fill or fixed, def. fixed)
+        month={{ year: 2022, month }}
+        value={date}
+        onChange={setDate}
+        closedDays={['2022-06-15']}
+        closedPastDays={false}
+        indicator={'show-year'}
+        onIndicatorClick={()=>alert('react-minimal-calendar is 🔥')}
+        multiselect={false}
+        header={true}
+        layout="fixed"
         palette={{
           primary: "darkblue",
           selection: "pink",
           accent: "white"
-        }} // optional (boolean or callback)
-        daySize={40} // optional (int, def. 40)
-        fontSize={16} // optional (int, def. 14)
-        fontFamily={'Gotham'} // optional
+        }}
+        daySize={40}
+        fontSize={14}
+        fontFamily={'Poppins'}
       />
-      
     </div>
   );
 }
 
 export default App;
 ```
+
+### Props
+
+| Key              | Mandatory | Type                       | Default                         |
+|------------------|-----------|----------------------------|---------------------------------|
+| month            | required  | Object                     | -                               |
+| value            | required  | String 'YYYY-MM-DD'        | -                               |
+| onChange         | required  | Function                   | -                               |
+| closedDays       | -         | Array                      | []                              |
+| closedPastDays   | -         | Boolean or 'include-today' | false                           |
+| indicator        | -         | Boolean or 'show-year'     | undefined                       |
+| onIndicatorClick | -         | Function                   | undefined                       |
+| multiselect      | -         | Boolean                    | false                           |
+| header           | -         | Boolean or Array(7)        | true                            |
+| layout           | -         | 'fill' or 'fixed'          | 'fixed'                         |
+| palette          | -         | Object                     | [default theme](#default-theme) |
+| daySize          | -         | Integer (px)               | 40                              |
+| fontSize         | -         | Integer (px)               | 14                              |
+| fontFamily       | -         | String                     | 'Helvetica, sans-serif'         |
+
+
+### Default Theme
+```
+{
+  primary: "black",
+  selection: "black",
+  accent: "white"
+}
+```
+
+## Change Months
