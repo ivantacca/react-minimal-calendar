@@ -1,9 +1,3 @@
-export const resolveHeader = header => {
-    if (header)
-        return header.length === 7 ? header : ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-    else return []
-}
-
 export const resolveMonthName = index => {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return monthNames[index];
@@ -19,23 +13,6 @@ export const reduceYear = (year, monthIndex) => {
     else return monthIndex >= 12 ?
         year + Math.floor(monthIndex / 12)
         : year + Math.floor(monthIndex / 12)
-}
-
-export const validateProps = props => {
-    const missingMandatoryProps = ["month","value","onChange"]
-    .reduce((missing, property)=>{
-        if(!Object.keys(props).includes(property))
-        missing.push(property)
-        return missing
-    },[])
-    
-    if(missingMandatoryProps.length > 0)
-        throw `The following required props are missing: ${missingMandatoryProps.join(', ')}`
-    else return {
-        month: reduceMonthIndex(props.month.month),
-        year: props.month.year,
-        selected: props.multiselect ? [props.value] : props.value
-    }
 }
 
 export function loader() {

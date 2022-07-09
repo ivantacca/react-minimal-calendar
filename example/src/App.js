@@ -19,7 +19,7 @@ function App() {
         indicator={'show-year'}
         onIndicatorClick={()=>alert('react-minimal-calendar is 🔥')}
         multiselect={false}
-        header={true}
+        header={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
         layout="fixed"
         palette={{
           primary: "darkblue",

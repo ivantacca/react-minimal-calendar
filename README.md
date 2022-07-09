@@ -26,7 +26,7 @@ function App() {
         indicator={'show-year'}
         onIndicatorClick={()=>alert('react-minimal-calendar is 🔥')}
         multiselect={false}
-        header={true}
+        header={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
         layout="fixed"
         palette={{
           primary: "darkblue",
@@ -56,7 +56,7 @@ export default App;
 | indicator        | -         | Boolean or 'show-year'     | undefined                       |
 | onIndicatorClick | -         | Function                   | undefined                       |
 | multiselect      | -         | Boolean                    | false                           |
-| header           | -         | Boolean or Array(7)        | true                            |
+| header           | -         | Array(7)                   | true                            |
 | layout           | -         | 'fill' or 'fixed'          | 'fixed'                         |
 | palette          | -         | Object                     | [default theme](#default-theme) |
 | daySize          | -         | Integer (px)               | 40                              |

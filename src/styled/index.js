@@ -7,8 +7,8 @@ export const CalendarContainer = styled.div`
     flex: 1;
     align-self: stretch;
     * {
-        font-family: ${props=>props.fontFamily || 'Helvetica, sans-serif'};
-        color: ${props=>props.palette?.primary || 'black'};
+        font-family: ${props=>props.fontFamily};
+        color: ${props=>props.palette?.primary};
     }
 `;
 export const CalendarGrid = styled.div`
@@ -41,21 +41,21 @@ export const DayContainer = styled.div`
   display:flex;
   flex: 1;
   justify-content:center;
-  font-size: ${props=>props.fontSize || 14}px;
+  font-size: ${props=>props.fontSize}px;
 `;
 
 export const DayItem = styled.button`
-  width: ${props=>props.daySize || 40}px;
-  height: ${props=>props.daySize || 40}px;
+  width: ${props=>props.daySize}px;
+  height: ${props=>props.daySize}px;
   align-items: center;
   justify-content: center;
   border-radius: 100px;
   border:0;
-  background-color: ${props => props.selected ? props.palette?.selection || 'black' : 'transparent'};
+  background-color: ${props => props.selected ? props.palette?.selection : 'transparent'};
   &:hover{
     cursor: pointer;
   }
-  font-size: ${props => props.fontSize || 14}px;
+  font-size: ${props => props.fontSize}px;
   ${(props) => props.closed ? { textDecoration: "line-through" } : null}
   ${(props) => (props.disabled ? `
     opacity: 0.25;
@@ -64,7 +64,7 @@ export const DayItem = styled.button`
     }
   ` : null)}
   ${props => props.selected ? `
-    color: ${props.palette?.accent || 'white'};
+    color: ${props.palette?.accent};
   ` : null}
 `;
 
@@ -73,5 +73,5 @@ export const Label = styled.span`
     font-size: 19px;
 `
 export const FixedWrapper = styled.div`
-    width: calc(${props=>props.daySize || 40}px * 7);
+    width: calc(${props=>props.daySize}px * 7);
 `

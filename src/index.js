@@ -10,13 +10,17 @@ import {
     Label,
     FixedWrapper
 } from './styled'
-import { loader, resolveHeader, resolveMonthName, reduceMonthIndex, reduceYear, validateProps } from './utils'
+import { loader, resolveMonthName, reduceMonthIndex, reduceYear } from './utils'
+import propTypes from './schema'
 
-
-export default class Calendar extends React.Component {
+class Calendar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = validateProps(this.props);
+        this.state = {
+            month: reduceMonthIndex(this.props.month.month),
+            year: this.props.month.year,
+            selected: this.props.multiselect ? [this.props.value] : this.props.value
+        }
     }
 
     componentDidUpdate(prevProps){
@@ -80,7 +84,7 @@ export default class Calendar extends React.Component {
                     selected={this.state.selected}
                     month={this.props.month.month}
                     year={this.state.year}
-                    header={resolveHeader(this.props.header)}
+                    header={this.props.header}
                     palette={this.props.palette}
                     daySize={this.props.daySize}
                     fontSize={this.props.fontSize}
@@ -172,3 +176,8 @@ const Day = (props) => {
         </DayContainer>
     );
 };
+
+Calendar.propTypes = propTypes.schema;
+Calendar.defaultProps = propTypes.default;
+
+export default Calendar;
