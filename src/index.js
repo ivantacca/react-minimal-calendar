@@ -82,7 +82,7 @@ class Calendar extends React.Component {
                     closedPastDays={this.props.closedPastDays}
                     select={this.select}
                     selected={this.state.selected}
-                    month={this.props.month.month}
+                    month={this.state.month}
                     year={this.state.year}
                     header={this.props.header}
                     palette={this.props.palette}
