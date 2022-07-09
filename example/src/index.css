@@ -3,6 +3,8 @@
 body{
   margin:0;
   padding:0;
+  background-color: black;
+  filter: invert(100%);
 }
 .App {
   height: 100vh;
@@ -19,7 +21,7 @@ body{
   align-items: center;
 
 }
-.row > button {
+.row > div > button {
   flex: 0 0 45px;
   background-color: rgba(0, 0, 139,0.03);
   color: darkblue;
@@ -30,10 +32,10 @@ body{
   width: 45px;
   border: 0;
   border-radius: 100%;
-  margin: 50px;
+  margin: 10px;
   transition-duration: .3s;
 }
-.row > button:hover {
+.row > div > button:hover {
   opacity: .5;
   cursor: pointer;
 }
@@ -44,7 +46,13 @@ body{
   border-radius: 17px;
   color: darkblue;
   font-size: 14px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   padding: 10px 20px;
   background-color: rgba(0, 0, 139,0.03);
+}
+
+.btn-back-container,
+.btn-next-container{
+  display: flex;
+  margin: 40px;
 }
