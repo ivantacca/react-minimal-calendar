@@ -9,7 +9,7 @@ function App() {
   const [year, setYear] = useState(2022)
 
   return (
-    <div className="App">
+    <div className="app">
       <div className="row">
         <div className="btn-back-container">
           <button onClick={()=>setYear(year-1)}><ChevronsLeft/></button>
