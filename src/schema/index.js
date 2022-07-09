@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export default {
     schema: {
         month: PropTypes.object.isRequired,
-        value: PropTypes.string.isRequired,
+        value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         closedDays: PropTypes.array,
         closedPastDays: PropTypes.oneOfType([
@@ -29,6 +29,7 @@ export default {
     },
 
     default: {
+        value: null,
         closedDays: [],
         closedPastDays: false,
         indicator: 'show-year',
