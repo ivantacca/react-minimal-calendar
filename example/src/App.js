@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
-import Calendar from 'react-minimal-calendar'
+import Calendar, {useMonth} from 'react-minimal-calendar'
 import {ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight} from 'react-feather'
 import './index.css';
 
 function App() {
   const [date, setDate] = useState('2022-06-16')
-  const [month, setMonth] = useState(5)
-  const [year, setYear] = useState(2022)
-
+  const [month, setMonth, setYear] = useMonth(5, 2022);
+  
   return (
     <div className="app">
       <div className="row">
         <div className="btn-back-container">
-          <button onClick={()=>setYear(year-1)}><ChevronsLeft/></button>
-          <button onClick={()=>setMonth(month-1)}><ChevronLeft/></button>
+          <button onClick={setYear.prev}><ChevronsLeft/></button>
+          <button onClick={setMonth.prev}><ChevronLeft/></button>
         </div>
         <Calendar 
-          month={{ year, month }}
+          month={month}
           value={date}
           onChange={setDate}
           closedDays={['2022-06-15']}
@@ -36,8 +35,9 @@ function App() {
           fontFamily={'Poppins'}
         />
         <div className="btn-next-container">
-          <button onClick={()=>setMonth(month+1)}><ChevronRight/></button>
-          <button onClick={()=>setYear(year+1)}><ChevronsRight/></button>
+          <button onClick={setMonth.next}><ChevronRight/></button>
+          <button onClick={setYear.next}><ChevronsRight/></button>
+
         </div>
       </div>
       {date ? <span className="abs-date-indicator">{date}</span> : null}

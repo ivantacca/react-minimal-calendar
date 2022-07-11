@@ -10,14 +10,14 @@ import {
     Label,
     FixedWrapper
 } from './styled'
-import { loader, resolveMonthName, reduceMonthIndex, reduceYear } from './utils'
+import { loader, resolveMonthName, reduceMonthIndex } from './utils'
 import propTypes from './schema'
 
 class Calendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            month: reduceMonthIndex(this.props.month.month),
+            month: reduceMonthIndex(this.props.month.index),
             year: this.props.month.year,
             selected: this.props.multiselect ? [this.props.value] : this.props.value
         }
@@ -30,10 +30,10 @@ class Calendar extends React.Component {
             })
         }
 
-        if(prevProps.month.month !== this.props.month.month){
+        if(prevProps.month.index !== this.props.month.index){
             this.setState({
-                month: reduceMonthIndex(this.props.month.month),
-                year: reduceYear(this.props.month.year, this.props.month.month)
+                month: reduceMonthIndex(this.props.month.index),
+                year: this.props.month.year,
             })
         }
     }
@@ -181,3 +181,5 @@ Calendar.propTypes = propTypes.schema;
 Calendar.defaultProps = propTypes.default;
 
 export default Calendar;
+
+export {useMonth} from './hooks'

@@ -3,16 +3,26 @@ export const resolveMonthName = index => {
     return monthNames[index];
 }
 export const reduceMonthIndex = index => {
-    if (index >= 0)
-        return index < 12 ? index : index - 12 * Math.floor(index / 12)
-    else
+    if( index >= 0 && index <= 11) return index
+    else{
+        console.warn(`Invalid month index supplied to Calendar. Expected integer between 0 and 11 and got ${index} instead.\nIt seems like you are not using the useMonth hook, learn more at https://github.com/ivantacca/react-minimal-calendar#update-month.`)
         return index - 12 * Math.floor(index / 12)
+    }
 }
-export const reduceYear = (year, monthIndex) => {
-    if (monthIndex >= 0 && monthIndex < 12) return year
-    else return monthIndex >= 12 ?
-        year + Math.floor(monthIndex / 12)
-        : year + Math.floor(monthIndex / 12)
+
+// export const reduceYear = (year, monthIndex) => {
+//     if (monthIndex >= 0 && monthIndex < 12) return year
+//     else return monthIndex >= 12 ?
+//         year + Math.floor(monthIndex / 12)
+//         : year + Math.floor(monthIndex / 12)
+// }
+
+export const validateMonthIndex = index => {
+    if(index > 11 || index < 0){
+        console.warn(`Invalid month index supplied to useMonth. Expected integer between 0 and 11 and got ${index} instead. The default month index will be set to 0 (January)`)
+        return 0
+    }
+    else return index;
 }
 
 export function loader() {

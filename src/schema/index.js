@@ -1,8 +1,21 @@
 import PropTypes from "prop-types";
 
+const isInteger = (props, propName, componentName) => {
+    if(!Number.isInteger(props[propName]))
+        return new Error ('Invalid value of `' + propName + '` supplied to' + ' `' + componentName + '`. Expected integer.')
+}
+
+const isValidHeader = (props, propName, componentName) => {
+    if(!Array.isArray(props[propName]) || (props[propName].length !== 7 && props[propName].length !== 0))
+        return new Error ('Invalid type of `' + propName + '` supplied to' + ' `' + componentName + '`. Expected Array(7) or Array(0).')
+}
+
 export default {
     schema: {
-        month: PropTypes.object.isRequired,
+        month: PropTypes.exact({
+            index:  isInteger,
+            year:  isInteger,
+        }).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         closedDays: PropTypes.array,
@@ -16,16 +29,16 @@ export default {
         ]),
         onIndicatorClick: PropTypes.func,
         multiselect: PropTypes.bool,
-        header: PropTypes.array, // specific length (Array(7))
+        header: isValidHeader,
         layout: PropTypes.oneOf(['fill','fixed']),
         palette: PropTypes.exact({
             primary:  PropTypes.string,
             selection:  PropTypes.string,
             accent:  PropTypes.string,
         }),
-        daySize:  PropTypes.number, //integer
-        fontSize:  PropTypes.number, //integer
-        fontFamily:  PropTypes.string,
+        daySize:  isInteger,
+        fontSize:  isInteger,
+        fontFamily:  PropTypes.string
     },
 
     default: {
