@@ -3,20 +3,20 @@ import React, { useState } from 'react'
 import Calendar, {useMonth} from 'react-minimal-calendar'
 import {ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight} from 'react-feather'
 import {palette} from './const'
+import {AppContainer, Row, ArrowButton, DateIndicator, ButtonContainer} from './styled'
 
 function App() {
   const [date, setDate] = useState('2022-06-16')
   const [month, setMonth, setYear] = useMonth(5, 2022);
   const [theme, setTheme] = useMonth('light')
 
-
   return (
-    <div className="app">
-      <div className="row">
-        <div className="btn-back-container">
-          <button onClick={setYear.prev}><ChevronsLeft/></button>
-          <button onClick={setMonth.prev}><ChevronLeft/></button>
-        </div>
+    <AppContainer>
+      <Row>
+        <ButtonContainer>
+          <ArrowButton onClick={setYear.prev}><ChevronsLeft/></ArrowButton>
+          <ArrowButton onClick={setMonth.prev}><ChevronLeft/></ArrowButton>
+        </ButtonContainer>
         <Calendar 
           month={month}
           value={date}
@@ -33,14 +33,13 @@ function App() {
           fontSize={16}
           fontFamily={'Poppins'}
         />
-        <div className="btn-next-container">
-          <button onClick={setMonth.next}><ChevronRight/></button>
-          <button onClick={setYear.next}><ChevronsRight/></button>
-
-        </div>
-      </div>
-      {date ? <span className="abs-date-indicator">{date}</span> : null}
-    </div>
+        <ButtonContainer>
+          <ArrowButton onClick={setMonth.next}><ChevronRight/></ArrowButton>
+          <ArrowButton onClick={setYear.next}><ChevronsRight/></ArrowButton>
+        </ButtonContainer>
+      </Row>
+      <DateIndicator>{date || 'No date selected.'}</DateIndicator>
+    </AppContainer>
   );
 }
 
