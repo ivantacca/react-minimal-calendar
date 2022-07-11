@@ -1,12 +1,15 @@
+import './index.css';
 import React, { useState } from 'react'
 import Calendar, {useMonth} from 'react-minimal-calendar'
 import {ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight} from 'react-feather'
-import './index.css';
+import {palette} from './const'
 
 function App() {
   const [date, setDate] = useState('2022-06-16')
   const [month, setMonth, setYear] = useMonth(5, 2022);
-  
+  const [theme, setTheme] = useMonth('light')
+
+
   return (
     <div className="app">
       <div className="row">
@@ -25,11 +28,7 @@ function App() {
           multiselect={false}
           header={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
           layout="fixed"
-          palette={{
-            primary: "darkblue",
-            selection: "pink",
-            accent: "white"
-          }}
+          palette={palette.light}
           daySize={40}
           fontSize={16}
           fontFamily={'Poppins'}
