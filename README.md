@@ -7,18 +7,18 @@ npm i react-minimal-calendar
 ```
 
 ## Usage
-```javascript
+```js
 import { useState } from 'react';
 import Calendar from 'react-minimal-calendar';
 
 function App() {
   const [date, setDate] = useState()
-  const [month, setMonth] = useState(5) // June
-  
+  const month = { index: 5, year: 2022 } // June 2022
+
   return (
     <div className="App">
       <Calendar 
-        month={{ year: 2022, month }}
+        month={month} 
         value={date}
         onChange={setDate}
         closedDays={['2022-06-15']}
@@ -46,26 +46,26 @@ export default App;
 
 ### Props
 
-| Key              | Mandatory | Type                       | Default                         |
-|------------------|-----------|----------------------------|---------------------------------|
-| month            | required  | Object                     | -                               |
-| value            | required  | String 'YYYY-MM-DD'        | -                               |
-| onChange         | required  | Function                   | -                               |
-| closedDays       | -         | Array                      | []                              |
-| closedPastDays   | -         | Boolean or 'include-today' | false                           |
-| indicator        | -         | Boolean or 'show-year'     | undefined                       |
-| onIndicatorClick | -         | Function                   | undefined                       |
-| multiselect      | -         | Boolean                    | false                           |
-| header           | -         | Array(7)                   | true                            |
-| layout           | -         | 'fill' or 'fixed'          | 'fixed'                         |
-| palette          | -         | Object                     | [default theme](#default-theme) |
-| daySize          | -         | Integer (px)               | 40                              |
-| fontSize         | -         | Integer (px)               | 14                              |
-| fontFamily       | -         | String                     | 'Helvetica, sans-serif'         |
+| Key              | Mandatory | Type                       | Default                                    |
+|------------------|-----------|----------------------------|--------------------------------------------|
+| month            | required  | Object                     | -                                          |
+| value            | required  | String 'YYYY-MM-DD'        | -                                          |
+| onChange         | required  | Function                   | -                                          |
+| closedDays       | -         | Array                      | []                                         |
+| closedPastDays   | -         | Boolean or 'include-today' | false                                      |
+| indicator        | -         | Boolean or 'show-year'     | undefined                                  |
+| onIndicatorClick | -         | Function                   | undefined                                  |
+| multiselect      | -         | Boolean                    | false                                      |
+| header           | -         | Array(7) or Array(0)       | ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'] |
+| layout           | -         | 'fill' or 'fixed'          | 'fixed'                                    |
+| palette          | -         | Object                     | [default theme](#default-theme)            |
+| daySize          | -         | Integer (px)               | 40                                         |
+| fontSize         | -         | Integer (px)               | 14                                         |
+| fontFamily       | -         | String                     | 'Helvetica, sans-serif'                    |
 
 
 ### Default Theme
-```
+```js
 {
   primary: "black",
   selection: "black",
@@ -73,4 +73,27 @@ export default App;
 }
 ```
 
-## Change Months
+## Update month
+It could be tricky to implement a month picker to select the desired month, expecially when you are looking for a sequential month picker, for example a "next month" feature. `react-minimal-calendar` provides a built-in hook called `useMonth`. This hook allows you to safely choose the month to display in the calendar, without implementing the month picker logic from scratch
+
+```js
+import {useMonth} from 'react-minimal-calendar'
+
+function Example (){
+  const [month, setMonth, setYear] = useMonth(5, 2022) //  June 2022
+
+  return <div>
+    <button onClick={prevMonth}>previous</button>
+    <Calendar month={month}/>
+    <button onClick={nextMonth}>next</button>
+  </div>
+}
+
+```
+
+The hook returns an array of three objects
+|          |                 |                                                                           |
+|----------|-----------------|---------------------------------------------------------------------------|
+| month    | `{index, year}` | **object** that could be passed to `Calendar` as it is.                   |
+| setMonth | `{prev, next}`  | **functions** to set current index to the **previous** or **next** month. |
+| setYear  | `{prev, next}`  | **functions** to set **previous** or **next** year.                       |
