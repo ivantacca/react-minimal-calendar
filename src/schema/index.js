@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { defaultPalette } from "../styled/const";
 
 const isInteger = (props, propName, componentName) => {
     if(!Number.isInteger(props[propName]))
@@ -13,8 +14,8 @@ const isValidHeader = (props, propName, componentName) => {
 export default {
     schema: {
         month: PropTypes.exact({
-            index:  isInteger,
-            year:  isInteger,
+            index: isInteger,
+            year: isInteger,
         }).isRequired,
         value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
@@ -32,13 +33,13 @@ export default {
         header: isValidHeader,
         layout: PropTypes.oneOf(['fill','fixed']),
         palette: PropTypes.exact({
-            primary:  PropTypes.string,
-            selection:  PropTypes.string,
-            accent:  PropTypes.string,
+            primary: PropTypes.string,
+            selection: PropTypes.string,
+            accent: PropTypes.string,
         }),
-        daySize:  isInteger,
-        fontSize:  isInteger,
-        fontFamily:  PropTypes.string
+        daySize: isInteger,
+        fontSize: isInteger,
+        fontFamily: PropTypes.string
     },
 
     default: {
@@ -50,11 +51,7 @@ export default {
         multiselect: false,
         header: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
         layout: 'fixed',
-        palette: {
-            primary: "black",
-            selection: "black",
-            accent: "white"
-        },
+        palette: defaultPalette,
         daySize: 40,
         fontSize: 14,
         fontFamily: 'Helvetica, sans-serif',

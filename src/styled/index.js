@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultPalette } from "./const";
 
 // Calendar Style
 export const CalendarContainer = styled.div`
@@ -8,7 +9,7 @@ export const CalendarContainer = styled.div`
     align-self: stretch;
     * {
         font-family: ${props=>props.fontFamily};
-        color: ${props=>props.palette?.primary};
+        color: ${props=>props.palette?.primary || defaultPalette.primary};
     }
 `;
 export const CalendarGrid = styled.div`
@@ -51,7 +52,7 @@ export const DayItem = styled.button`
   justify-content: center;
   border-radius: 100px;
   border:0;
-  background-color: ${props => props.selected ? props.palette?.selection : 'transparent'};
+  background-color: ${props => props.selected ? props.palette?.selection || defaultPalette.selection : 'transparent'};
   &:hover{
     cursor: pointer;
   }
@@ -64,7 +65,7 @@ export const DayItem = styled.button`
     }
   ` : null)}
   ${props => props.selected ? `
-    color: ${props.palette?.accent};
+    color: ${props.palette?.accent || defaultPalette.accent};
   ` : null}
 `;
 
