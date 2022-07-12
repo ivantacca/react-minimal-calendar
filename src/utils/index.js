@@ -19,8 +19,8 @@ export const reduceMonthIndex = index => {
 
 export const validateMonthIndex = index => {
     if(index > 11 || index < 0){
-        console.warn(`Invalid month index supplied to useMonth. Expected integer between 0 and 11 and got ${index} instead. The default month index will be set to 0 (January)`)
-        return 0
+        console.warn(`Invalid month index supplied to useMonth. Expected integer between 0 and 11 and got ${index} instead. The default month index will be set to the current month.`)
+        return new Date().getMonth()
     }
     else return index;
 }
