@@ -31,6 +31,10 @@ export default {
         onIndicatorClick: PropTypes.func,
         multiselect: PropTypes.bool,
         header: isValidHeader,
+        headerStyle: PropTypes.exact({
+            opacity: PropTypes.number,
+            palette: PropTypes.oneOf(['primary','selection','accent']),
+        }),
         layout: PropTypes.oneOf(['fill','fixed']),
         palette: PropTypes.exact({
             primary: PropTypes.string,
@@ -50,6 +54,10 @@ export default {
         onIndicatorClick: () => alert('react-minimal-calendar is 🔥'),
         multiselect: false,
         header: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+        headerStyle: {
+            palette: 'primary',
+            opacity: .25,
+        },
         layout: 'fixed',
         palette: defaultPalette,
         daySize: 40,

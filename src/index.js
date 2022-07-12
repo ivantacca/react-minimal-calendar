@@ -85,6 +85,7 @@ class Calendar extends React.Component {
                     month={this.state.month}
                     year={this.state.year}
                     header={this.props.header}
+                    headerStyle={this.props.headerStyle}
                     palette={this.props.palette}
                     daySize={this.props.daySize}
                     fontSize={this.props.fontSize}
@@ -150,8 +151,12 @@ class InnerCalendar extends React.Component {
 
         return this.state.loading ? null : (
             <CalendarGrid>
-                {this.props.header.length ? <CalendarRow header>{this.props.header.map((day, index) => <DayContainer fontSize={this.props.fontSize} key={index}>{day}</DayContainer>)}</CalendarRow>
-                    : null}
+                {this.props.header.length ? <CalendarRow header 
+                paletteKey={this.props.headerStyle.palette}
+                palette={this.props.palette}
+                opacity={this.props.headerStyle.opacity}>
+                    {this.props.header.map((day, index) => <DayContainer fontSize={this.props.fontSize} key={index}>{day}</DayContainer>)}
+                </CalendarRow> : null}
                 {monthRender.map((week, index) => <CalendarRow key={index}>{week}</CalendarRow>)}
             </CalendarGrid>
         );

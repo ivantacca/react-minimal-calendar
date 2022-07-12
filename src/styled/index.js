@@ -23,7 +23,8 @@ export const CalendarRow = styled.div`
   flex-direction: row;
   flex: 1;
   ${props=>props.header ?
-    `opacity:.25;
+    `opacity: ${props.opacity || .25};
+    * { color: ${props.palette[props.paletteKey] || props.palette?.primary || defaultPalette.primary} }
     margin-bottom: 12px;`
     : null}
 `;
