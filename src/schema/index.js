@@ -17,7 +17,7 @@ export default {
             index: isInteger,
             year: isInteger,
         }).isRequired,
-        value: PropTypes.string,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
         onChange: PropTypes.func.isRequired,
         closedDays: PropTypes.array,
         closedPastDays: PropTypes.oneOfType([

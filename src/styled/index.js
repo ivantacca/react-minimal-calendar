@@ -32,6 +32,7 @@ export const MonthSelectorButton = styled.button`
   margin-bottom: 20px;
   border: 0;
   background-color: transparent;
+  transition: .2s;
   &:hover{
     cursor: pointer;
     opacity: .5;

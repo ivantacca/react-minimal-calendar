@@ -5,8 +5,8 @@ export const palette = {
     accent: "white"
   },
   dark: {
-    primary: "yellow",
-    selection: "yellow",
+    primary: "orangered",
+    selection: "palegreen",
     accent: "black"
   }
 }
