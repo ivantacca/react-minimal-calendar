@@ -5,11 +5,6 @@ const lightPalettes = [
     accent: "white"
   },
   {
-    primary: "#be3326",
-    selection: "#efefef",
-    accent: "#be3326"
-  },
-  {
     primary: "#8971d9",
     selection: "#e3dbfd",
     accent: "white"
