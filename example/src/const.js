@@ -26,12 +26,7 @@ const darkPalettes = [
     primary: "#c9ff5c",
     selection: "#3e32a1",
     accent: "white"
-  },
-  {
-    primary: "#b8e0d5",
-    selection: "#699186",
-    accent: "white"
-  },
+  }
 ]
 
 export const palette = {
