@@ -23,7 +23,7 @@ export const CalendarRow = styled.div`
   flex-direction: row;
   flex: 1;
   ${props=>props.header ?
-    `opacity: ${props.opacity || .25};
+    `opacity: ${props.opacity || props.disabledOpacity || .25};
     * { color: ${props.palette[props.paletteKey] || props.palette?.primary || defaultPalette.primary} }
     margin-bottom: 12px;`
     : null}
@@ -61,7 +61,7 @@ export const DayItem = styled.button`
   font-size: ${props => props.fontSize}px;
   ${(props) => props.closed ? { textDecoration: "line-through" } : null}
   ${(props) => (props.disabled ? `
-    opacity: 0.25;
+    opacity: ${props.disabledOpacity || .25};
     &:hover{
       cursor: default;
     }

@@ -87,6 +87,7 @@ class Calendar extends React.Component {
                     header={this.props.header}
                     headerStyle={this.props.headerStyle}
                     palette={this.props.palette}
+                    disabledOpacity={this.props.disabledOpacity}
                     daySize={this.props.daySize}
                     fontSize={this.props.fontSize}
                     multiselect={this.props.multiselect}
@@ -140,6 +141,7 @@ class InnerCalendar extends React.Component {
                         closed={day.closed}
                         disabled={day.disabled}
                         palette={this.props.palette}
+                        disabledOpacity={this.props.disabledOpacity}
                         daySize={this.props.daySize}
                         fontSize={this.props.fontSize}
                     />
@@ -154,6 +156,7 @@ class InnerCalendar extends React.Component {
                 {this.props.header.length ? <CalendarRow header 
                 paletteKey={this.props.headerStyle.palette}
                 palette={this.props.palette}
+                disabledOpacity={this.props.disabledOpacity}
                 opacity={this.props.headerStyle.opacity}>
                     {this.props.header.map((day, index) => <DayContainer fontSize={this.props.fontSize} key={index}>{day}</DayContainer>)}
                 </CalendarRow> : null}
@@ -175,6 +178,7 @@ const Day = (props) => {
                 closed={props.closed}
                 daySize={props.daySize}
                 palette={props.palette}
+                disabledOpacity={props.disabledOpacity}
                 fontSize={props.fontSize}>
                 {props.dayNumber}
             </DayItem>

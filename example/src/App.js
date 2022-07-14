@@ -43,9 +43,10 @@ function App() {
             onIndicatorClick={()=>alert('react-minimal-calendar is 🔥')}
             multiselect={false}
             header={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
-            headerStyle={{palette: 'primary', opacity: .25}}
+            headerStyle={{palette: 'primary', opacity: .35}}
             layout="fixed"
             palette={isDarkTheme ? palette.dark : palette.light}
+            disabledOpacity={.35}
             daySize={40}
             fontSize={16}
             fontFamily={'Poppins'}

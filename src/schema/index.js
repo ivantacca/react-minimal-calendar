@@ -41,6 +41,7 @@ export default {
             selection: PropTypes.string,
             accent: PropTypes.string,
         }),
+        disabledOpacity: PropTypes.number,
         daySize: isInteger,
         fontSize: isInteger,
         fontFamily: PropTypes.string
@@ -60,6 +61,7 @@ export default {
         },
         layout: 'fixed',
         palette: defaultPalette,
+        disabledOpacity: .25,
         daySize: 40,
         fontSize: 14,
         fontFamily: 'Helvetica, sans-serif',

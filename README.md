@@ -28,13 +28,13 @@ function App() {
         multiselect={false}
         header={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
         headerStyle={{palette: 'primary', opacity: .25}}
-        
         layout="fixed"
         palette={{
           primary: "darkblue",
           selection: "pink",
           accent: "white"
         }}
+        disabledOpacity={.5}
         daySize={40}
         fontSize={14}
         fontFamily={'Poppins'}
@@ -62,6 +62,7 @@ export default App;
 | headerStyle      | -         | Object                     | {palette: 'primary', opacity: .25}         |
 | layout           | -         | 'fill' or 'fixed'          | 'fixed'                                    |
 | palette          | -         | Object                     | [default theme](#default-theme)            |
+| disabledOpacity  | -         | Number                     | .25                                        |
 | daySize          | -         | Integer (px)               | 40                                         |
 | fontSize         | -         | Integer (px)               | 14                                         |
 | fontFamily       | -         | String                     | 'Helvetica, sans-serif'                    |
