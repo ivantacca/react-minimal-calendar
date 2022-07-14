@@ -27,6 +27,8 @@ function App() {
         onIndicatorClick={()=>alert('react-minimal-calendar is 🔥')}
         multiselect={false}
         header={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
+        headerStyle={{palette: 'primary', opacity: .25}}
+        
         layout="fixed"
         palette={{
           primary: "darkblue",
@@ -49,7 +51,7 @@ export default App;
 | Key              | Mandatory | Type                       | Default                                    |
 |------------------|-----------|----------------------------|--------------------------------------------|
 | month            | required  | Object                     | -                                          |
-| value            | required  | String 'YYYY-MM-DD'        | -                                          |
+| value            | required  | String 'YYYY-MM-DD' or []  | -                                          |
 | onChange         | required  | Function                   | -                                          |
 | closedDays       | -         | Array                      | []                                         |
 | closedPastDays   | -         | Boolean or 'include-today' | false                                      |
@@ -57,6 +59,7 @@ export default App;
 | onIndicatorClick | -         | Function                   | undefined                                  |
 | multiselect      | -         | Boolean                    | false                                      |
 | header           | -         | Array(7) or Array(0)       | ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'] |
+| headerStyle      | -         | Object                     | {palette: 'primary', opacity: .25}         |
 | layout           | -         | 'fill' or 'fixed'          | 'fixed'                                    |
 | palette          | -         | Object                     | [default theme](#default-theme)            |
 | daySize          | -         | Integer (px)               | 40                                         |
